@@ -1,0 +1,110 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+<title>JSP CRUD Example</title>  
+</head>  
+<body>  
+
+<a href="viewanimes.jsp">アニメ一覧</a><br />
+
+
+<h1>アニメを追加する</h1>
+
+<form action="addanime.jsp" method="post">
+	<table>
+		<!-- アニメの名前 -->
+		<tr>
+			<td>Anime Name:</td>
+			<td><input type="text" name="anime" required /></td>
+		</tr>
+
+		<!-- 公式Webサイト -->
+		<tr>
+			<td>Official URL:</td>
+			<td><input type="url" name="anime_url" required /></td>
+		</tr>
+
+		<!-- アニメの画像URL -->
+		<tr>
+			<td>Image URL:</td>
+			<td><input type="url" name="anime_img" required /></td>
+		</tr>
+		<!-- 5段階の評価 -->
+		<tr>
+			<td>評価:</td>
+			<td><input type="checkbox" name="rate" value="1" id="rate_1" />だめ</td>
+			<td><input type="checkbox" name="rate" value="2" id="rate_2" />まあまあ</td>
+			<td><input type="checkbox" name="rate" value="3" id="rate_3" />普通</td>
+			<td><input type="checkbox" name="rate" value="4" id="rate_4" />すごくいい</td>
+			<td><input type="checkbox" name="rate" value="5" id="rate_5" />ものすごくいい</td>
+		</tr>
+
+
+		<script>
+			function validateForm() {
+				const checkboxes = document.querySelectorAll('input[name="rate"]');
+				let isChecked = false;
+
+				// チェックボックスのいずれかがチェックされているか確認
+				for (const checkbox of checkboxes) {
+					if (checkbox.checked) {
+						isChecked = true;
+						break;
+					}
+				}
+
+				// もしどれもチェックされていない場合、エラーメッセージを表示して送信をキャンセル
+				if (!isChecked) {
+					alert("少なくとも1つの評価を選択してください。");
+					return false; // フォーム送信を中止
+				}
+
+				return true; // フォームを送信
+			}
+		</script>
+
+		<!-- ジャンル（チェックボックス） -->
+	</table>
+	<label for="genres">ジャンルを選択:</label><br />
+	<select name="genres" id="genres" multiple size="10" style="width: 200px;">
+		<option value="genreAction">アクション</option>
+		<option value="genreAdventure">アドベンチャー</option>
+		<option value="genreComedy">コメディ</option>
+		<option value="genreDrama">ドラマ</option>
+		<option value="genreFamily">家族</option>
+		<option value="genreFantasy">ファンタジー</option>
+		<option value="genreFood">料理</option>
+		<option value="genreHarem">ハーレム</option>
+		<option value="genreHistorical">歴史</option>
+		<option value="genreHorror">ホラー</option>
+		<option value="genreKids">子供向け</option>
+		<option value="genreIsekai">異世界</option>
+		<option value="genreJosei">女性向け</option>
+		<option value="genreMagic">魔法</option>
+		<option value="genreMartialArts">格闘</option>
+		<option value="genreMecha">メカ</option>
+		<option value="genreMusic">音楽</option>
+		<option value="genreMystery">ミステリー</option>
+		<option value="genreRomance">ロマンス</option>
+		<option value="genreSciFi">SF</option>
+		<option value="genreSeinen">青年向け</option>
+		<option value="genreSgdrama">社会派ドラマ</option>
+		<option value="genreShojo">少女向け</option>
+		<option value="genreShonen">少年向け</option>
+		<option value="genreSliceOfLife">日常</option>
+		<option value="genreSports">スポーツ</option>
+		<option value="genreSupernatural">超自然</option>
+		<option value="genreThriller">スリラー</option>
+	</select>
+
+	<!-- 送信ボタン -->
+
+	<input type="submit" value="Add Anime" />
+
+
+</form>
+  
+</body>  
+</html>  
+
